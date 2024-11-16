@@ -1,0 +1,143 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>login</title>
+    <link rel="stylesheet" href="./../../STYLESHEET/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Russo+One&family=Signika&display=swap" rel="stylesheet">
+  
+</head>
+
+<body>
+    <div class="container">
+        <div class="need-login-container">
+            <h4 class="need">Need an account?<a href="./my-ac-signup.html" style="text-decoration: none;"> SIGN UP</a></h4>
+        </div>
+        <div class="login-title-container">
+            <img src="./../../IMAGES/my-ac-img/login-.png" alt="" class="login">
+        </div>
+        <div class="input-container">
+            <label for="myemail" class="input-title">Email</label>
+            <input type="text" class="input" placeholder="enter your email" id="myemail">
+        </div>
+        <div class="input-container">
+            <label for="mypass" class="input-title">Password</label>
+            <input type="text" class="input" placeholder="enter your password" id="mypass">
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox" class="check-box">
+            <h4 class="checkbox-title">Remember Password</h4>
+
+        </div>
+        <div class="login-container">
+            <a href="./../../index.html"><button class="btn">LOGIN</button></a>
+        </div>
+        <div class="social-title-container">
+            <h4 class="social-title">or connect with social media</h4>
+        </div>
+        <div class="social-png-container">
+           <a href="./../../index.html"><img src="././../../IMAGES/my-ac-img/google.png" alt="" class="social"></a> 
+          <a href="./../../index.html"><img src="./../../IMAGES/my-ac-img/facebook (1).png" alt="" class="social"></a> 
+          <a href="./../../index.html"><img src="./../../IMAGES/my-ac-img/linkedin.png" alt="" class="social"></a> 
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Russo+One&family=Signika&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="need-login-container">
+            <h4 class="need">Need an account?<a href="./my-ac-signup.html" style="text-decoration: none;"> SIGN UP</a></h4>
+        </div>
+        <div class="login-title-container">
+            <img src="./../../IMAGES/my-ac-img/login-.png" alt="" class="login">
+        </div>
+        <form id="loginForm">
+            <div class="input-container">
+                <label for="username" class="input-title">Username</label>
+                <input type="text" class="input" placeholder="Enter your username" id="username" required>
+            </div>
+            <div class="input-container">
+                <label for="password" class="input-title">Password</label>
+                <input type="password" class="input" placeholder="Enter your password" id="password" required>
+            </div>
+            <div class="login-container">
+                <button type="submit" class="btn">LOGIN</button>
+            </div>
+        </form>
+        <div class="social-title-container">
+            <h4 class="social-title">or connect with social media</h4>
+        </div>
+        <div class="social-png-container">
+            <a href="./../../index.html"><img src="./../../IMAGES/my-ac-img/google.png" alt="" class="social"></a> 
+            <a href="./../../index.html"><img src="./../../IMAGES/my-ac-img/facebook (1).png" alt="" class="social"></a> 
+            <a href="./../../index.html"><img src="./../../IMAGES/my-ac-img/linkedin.png" alt="" class="social"></a> 
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('loginForm').addEventListener('submit', async function(event) {
+                event.preventDefault();
+    
+                // Get username and password from the form
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+    
+                // Send login request to the backend
+                try {
+                    const response = await fetch('http://127.0.0.1:5000/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ username, password })
+                    });
+    
+                    const result = await response.json();
+    
+                    if (response.ok) {
+                        // If login is successful
+                        alert(result.message);  // Show the success message
+                        window.location.href = 'chatbot.html';  // Redirect to the chatbot page
+                    } else {
+                        // If login fails
+                        alert(result.error || 'Login failed. Please try again.');
+                    }
+                } catch (error) {
+                    alert('An error occurred. Please try again later.');
+                }
+            });
+        });
+    </script>
+    
+    
+</body>
+</html>

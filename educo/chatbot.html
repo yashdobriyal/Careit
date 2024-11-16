@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARE.IT Chatbot</title>
+    <link rel="stylesheet" href="test.css">
+</head>
+<body onload="showGreetingMessage()">
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo-container">
+            <img src="logo.png" alt="Company Logo" class="logo">
+            <h1 class="company-name">Care.It</h1>
+        </div>
+    </div>
+    <div class="header-right">
+        <a href="index.html" class="home-button">
+            <img src="home.png" alt="Home" class="home-icon">
+        </a>
+    </div>
+    </header>
+
+    <!-- Main Chat Section -->
+    <div class="chat-section">
+
+        <div class="left-column">
+            <div class="quote-box">
+                <p class="quote-text">"What does not kill me makes me stronger."</p>
+                <p class="author-name">— Friedrich Nietzsche</p>
+                <p class="book-title">Book: <strong><a href="https://www.amazon.in/Thus-Spoke-Zarathustra-Friedrich-Nietzsche/dp/9380005555" target="_blank">Thus Spoke Zarathustra</a></strong></p>
+            </div>
+        
+            <!-- Another Quote Box -->
+            <div class="quote-box">
+                <p class="quote-text">"The mind is everything. What you think you become."</p>
+                <p class="author-name">— Buddha</p>
+                <p class="book-title">Book: <strong><a href="https://www.amazon.in/Wisdom-Buddha-Friedrich-Maximilian-Muller/dp/1602062544" target="_blank">The Dhammapada</a></strong></p>
+            </div>
+        
+            <!-- Another Quote Box -->
+            <div class="quote-box">
+                <p class="quote-text">"There is no greater agony than bearing an untold story inside you."</p>
+                <p class="author-name">— Maya Angelou</p>
+                <p class="book-title">Book: <strong><a href="https://www.amazon.in/KNOW-WHY-CAGED-BIRD-SINGS/dp/086068511X" target="_blank">I Know Why the Caged Bird Sings</a></strong></p>
+            </div>
+            <div class="quote-box">
+                <p class="quote-text">"Find what you love and let it kill you."</p>
+                <p class="author-name">— Charles Bukowski</p>
+                <p class="book-title">Book: <strong><a href="https://www.amazon.in/Love-Dog-Hell-Charles-Bukowski/dp/0876853629" target="_blank">Love is a Dog from Hell</a></strong></p>
+            </div>
+        </div>
+
+
+        <div class="main-container">
+            <div class="chat-column">
+                <div class="chat-container">
+                    <h2 style="align-self: center;margin-bottom: 5px; color: rgb(20, 20, 20);">Care.it</h2>
+                    <div id="chat-box"></div>
+                    <div class="input-container">
+                        <input type="text" id="user-input" placeholder="Type your message..." />
+                        <button onclick="sendMessage()">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emergency Contacts and Predefined Questions -->
+        <div class="side-columns">
+            <div class="emergency-column">
+                <h3>Emergency Contacts</h3>
+                <ul>
+                    <li>Emergency Number: 000</li>
+                    <li>Mental Health Helpline: 123-456-7890</li>
+                    <li>Therapist Support: 098-765-4321</li>
+                </ul>
+            </div>
+
+            <div class="questions-column">
+                <h3>Don't know what to ask? its okay</h3>
+                <h4>Anxiety</h4>
+<ul>
+    <li onclick="sendPredefinedMessage('What are effective ways to cope with anxiety?')">What are effective ways to cope with anxiety?</li>
+    <li onclick="sendPredefinedMessage('How can I reduce anxious thoughts?')">How can I reduce anxious thoughts?</li>
+    <li onclick="sendPredefinedMessage('How can I calm myself during a panic attack?')">How can I calm myself during a panic attack?</li>
+    <!-- Additional questions on anxiety -->
+</ul>
+
+<!-- Stress Management -->
+<h4>Stress Management</h4>
+<ul>
+    <li onclick="sendPredefinedMessage('What are some quick ways to relieve stress?')">What are some quick ways to relieve stress?</li>
+    <li onclick="sendPredefinedMessage('How can I manage stress at work?')">How can I manage stress at work?</li>
+    <li onclick="sendPredefinedMessage('What are some relaxation techniques?')">What are some relaxation techniques?</li>
+    <!-- Additional questions on stress management -->
+</ul>
+
+<!-- Depression -->
+<h4>Depression</h4>
+<ul>
+    <li onclick="sendPredefinedMessage('What can I do to lift my mood?')">What can I do to lift my mood?</li>
+    <li onclick="sendPredefinedMessage('How do I deal with feeling empty?')">How do I deal with feeling empty?</li>
+    <li onclick="sendPredefinedMessage('What are ways to improve motivation?')">What are ways to improve motivation?</li>
+    <!-- Additional questions on depression -->
+</ul>
+
+<!-- Sleep Issues -->
+<h4>Sleep Issues</h4>
+<ul>
+    <li onclick="sendPredefinedMessage('How can I improve my sleep quality?')">How can I improve my sleep quality?</li>
+    <li onclick="sendPredefinedMessage('What should I do if I can\'t fall asleep?')">What should I do if I can't fall asleep?</li>
+    <li onclick="sendPredefinedMessage('How can I manage sleep anxiety?')">How can I manage sleep anxiety?</li>
+    <!-- Additional questions on sleep issues -->
+</ul>
+
+<!-- Relationships -->
+<h4>Relationships</h4>
+<ul>
+    <li onclick="sendPredefinedMessage('How can I improve communication with my partner?')">How can I improve communication with my partner?</li>
+    <li onclick="sendPredefinedMessage('What can I do to resolve conflicts better?')">What can I do to resolve conflicts better?</li>
+    <li onclick="sendPredefinedMessage('How do I cope with loneliness?')">How do I cope with loneliness?</li>
+    <!-- Additional questions on relationships -->
+</ul>
+
+<!-- Self-Esteem and Confidence -->
+<h4>Self-Esteem and Confidence</h4>
+<ul>
+    <li onclick="sendPredefinedMessage('How can I boost my self-esteem?')">How can I boost my self-esteem?</li>
+    <li onclick="sendPredefinedMessage('What can I do to build self-confidence?')">What can I do to build self-confidence?</li>
+    <li onclick="sendPredefinedMessage('How do I overcome self-doubt?')">How do I overcome self-doubt?</li>
+    <!-- Additional questions on self-esteem -->
+</ul>
+
+<!-- General Mental Health Tips -->
+<h4>General Mental Health Tips</h4>
+<ul>
+    <li onclick="sendPredefinedMessage('What are some daily habits for better mental health?')">What are some daily habits for better mental health?</li>
+    <li onclick="sendPredefinedMessage('How can I practice mindfulness?')">How can I practice mindfulness?</li>
+    <li onclick="sendPredefinedMessage('What are ways to develop a positive mindset?')">What are ways to develop a positive mindset?</li>
+    <!-- Additional questions on mental health tips -->
+</ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>CareIt is dedicated to providing mental health support through innovative solutions.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: support@careit.com</p>
+                <p>Phone: +1 800 123 4567</p>
+                <p>Address: 123 Wellness Ave, Happy Town, HT 12345</p>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-media">
+                    <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="test.js"></script>
+</body>
+</html>

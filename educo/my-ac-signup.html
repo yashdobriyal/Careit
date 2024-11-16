@@ -1,0 +1,172 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="./../../STYLESHEET/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Russo+One&family=Signika&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="login-title-container">
+            <h2>Login</h2>
+        </div>
+        <form id="loginForm">
+            <div class="input-container">
+                <label for="email" class="input-title">Email</label>
+                <input type="email" id="email" name="email" class="input" placeholder="Enter your email" required>
+            </div>
+            <div class="input-container">
+                <label for="phone" class="input-title">Phone Number</label>
+                <input type="text" id="phone" name="phone" class="input" placeholder="Enter your phone number" required>
+            </div>
+            <div class="input-container">
+                <label for="password" class="input-title">Password</label>
+                <input type="password" id="password" name="password" class="input" placeholder="Enter your password" required>
+            </div>
+            <div class="login-container">
+                <button type="submit" class="btn">LOGIN</button>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('loginForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // Get form values
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const password = document.getElementById('password').value;
+                
+                // Validate email
+                const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                if (!emailPattern.test(email)) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+
+                // Validate phone number (basic validation for 10 digit numbers)
+                const phonePattern = /^\d{10}$/;
+                if (!phonePattern.test(phone)) {
+                    alert('Please enter a valid 10-digit phone number.');
+                    return;
+                }
+
+                // Simple password length validation (this should be enhanced for real-world apps)
+                if (password.length < 6) {
+                    alert('Password must be at least 6 characters long.');
+                    return;
+                }
+
+                // If all validations pass, simulate successful login
+                alert('Login successful!');
+                // In a real-world scenario, you would send a request to the server for authentication
+            });
+        });
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="signup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Russo+One&family=Signika&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="login-title-container">
+            <h2>Register</h2>
+        </div>
+        <form id="registerForm">
+            <div class="input-container">
+                <label for="first_name" class="input-title">First Name</label>
+                <input type="text" id="first_name" name="first_name" class="input" placeholder="Enter your first name" required>
+            </div>
+            <div class="input-container">
+                <label for="last_name" class="input-title">Last Name</label>
+                <input type="text" id="last_name" name="last_name" class="input" placeholder="Enter your last name" required>
+            </div>
+            <div class="input-container">
+                <label for="dob" class="input-title">Date of Birth</label>
+                <input type="date" id="dob" name="dob" class="input" required>
+            </div>
+            <div class="input-container">
+                <label for="phone_number" class="input-title">Phone Number</label>
+                <input type="text" id="phone_number" name="phone_number" class="input" placeholder="Enter your phone number" required>
+            </div>
+            <div class="input-container">
+                <label for="email" class="input-title">Email</label>
+                <input type="email" id="email" name="email" class="input" placeholder="Enter your email" required>
+            </div>
+            <div class="input-container">
+                <label for="username" class="input-title">Username</label>
+                <input type="text" id="username" name="username" class="input" placeholder="Enter your username" required>
+            </div>
+            <div class="input-container">
+                <label for="password" class="input-title">Password</label>
+                <input type="password" id="password" name="password" class="input" placeholder="Enter your password" required>
+            </div>
+            <div class="input-container">
+                <label for="confirm_password" class="input-title">Confirm Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" class="input" placeholder="Confirm your password" required>
+            </div>
+            <div class="login-container">
+                <button type="submit" class="btn">REGISTER</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('registerForm').addEventListener('submit', async function(event) {
+                event.preventDefault();
+        
+                // Get form values
+                const first_name = document.getElementById('first_name').value;
+                const last_name = document.getElementById('last_name').value;
+                const dob = document.getElementById('dob').value;
+                const phone_number = document.getElementById('phone_number').value;
+                const email = document.getElementById('email').value;
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const confirm_password = document.getElementById('confirm_password').value;
+        
+                // Send registration data to the backend
+                try {
+                    const response = await fetch('http://localhost:5000/register', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            first_name, last_name, dob, phone_number, email, username, password, confirm_password
+                        })
+                    });
+        
+                    const result = await response.json();
+        
+                    if (response.ok) {
+                        alert('Registration successful!');
+                        // Redirect to my-ac.html after successful registration
+                        window.location.href = 'my-ac.html'; // Make sure this is the correct path
+                    } else {
+                        alert(result.error || 'Registration failed. Please try again.');
+                    }
+                } catch (error) {
+                    alert('An error occurred. Please try again later.');
+                }
+            });
+        });
+    </script>
+    
+    
+</body>
+</html>
+
